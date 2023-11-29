@@ -17,8 +17,8 @@ body {
 
 .nav-link:hover,
 .nav-link.active {
-    color: rgb(151, 12, 12);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+    color: rgb(255, 255, 255, 0.7);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.7);
 }
 
 .btn-light {
