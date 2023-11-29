@@ -27,6 +27,7 @@ const flash = require('connect-flash');
 const mongoConnexion = require('./utilities/mongoconnexion.js');
 mongoConnexion();
 
+
 app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -50,16 +51,22 @@ app.use(
     },
     ));
 
+const MongoStore = require('connect-mongo');
+
 const secret = process.env.SECRET || 'ewq#$@^47623';
 
 const sessionConfig = {
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URL || 'mongodb://127.0.0.1:27017/yelpCamp',
+        touchAfter: 24 * 3600 // time period in seconds
+    }),
     name: 'session',
     secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
         htmlOnly: true,
-        // secure: true,
+        secure: true,
         expires: Date.now() + (1000 * 60 * 60 * 24 * 7),
         maxAge: 1000 * 60 * 60 * 24 * 7,
     }
@@ -117,4 +124,5 @@ app.use((err, req, res, next) => {
 
 // OPENING PORT ************************************************************************
 
-app.listen(4000, () => console.log('listening on port 4000'));
+const port = process.env.PORT || 4000;
+app.listen(port, () => console.log(`listening on port ${port}`));
