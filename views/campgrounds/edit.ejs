@@ -1,0 +1,73 @@
+<% layout('layouts/boilerplate') -%>
+    <div class="container col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+        <h1>Edit <%= campground.title %>
+        </h1>
+        <form action="/campgrounds/<%= campground.id %>?_method=PUT" method="post" class="needs-validation"
+            enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label">Campground's name</label>
+                <input value="<%= campground.title %>" type="text" minlength="5" maxlength="50" class="form-control"
+                    id="title" name="campground[title]" required>
+                <div class="invalid-feedback">
+                    Please choose a name of min 5 characters and max 50.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input value="<%= campground.price %>" type="number" min="0" step="0.1" class="form-control" id="price"
+                    name="campground[price]" required>
+                <div class="invalid-feedback">
+                    Please define a valid price.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="city" class="form-label">City</label>
+                <input class="form-control" value="<%= campground.city %>" type="text" name="campground[city]" id="city"
+                    required>
+                <div class="invalid-feedback">
+                    Please select a city.
+                </div>
+                <label for="state" class="form-label">State</label>
+                <input class="form-control" value="<%= campground.state %>" type="text" name="campground[state]"
+                    id="state" required>
+                <div class="invalid-feedback">
+                    Please select a state.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" minlength="10" maxlength="500"
+                    name="campground[description]" rows="3" required><%= campground.description %></textarea>
+                <div class="invalid-feedback">
+                    Please add a description (min 10 characters and max 500).
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Add image(s)</label>
+                <input type="file" class="form-control" id="image" name="images" multiple>
+            </div>
+
+            <div class="mb-3">Choose images to delete:</div>
+            <div class="mb-3 d-sm-flex flex-wrap col-12">
+
+                <% campground.images.forEach((image,i)=> { %>
+                    <div class="form-check mb-3 col-md-6 col-lg-4">
+                        <div class="me-3">
+                            <label for="deleteImage-<%= i %>">
+                                <img src="<%= image.thumbnail %>" class="img-fluid rounded" alt="...">
+                            </label>
+                            <input class="form-check-input" type="checkbox" name="deleteImages[]"
+                                value="<%= image.filename %>" id="deleteImage-<%= i %>" style="margin-top: 28%;">
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+        <a class="btn btn-warning mt-3" href="/campgrounds/<%= campground.id %>">Cancel</a>
+    </div>

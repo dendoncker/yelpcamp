@@ -1,0 +1,63 @@
+<% layout('layouts/boilerplate') -%>
+    <div class="container col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+        <h1>Add a new camp</h1>
+        <form action="/campgrounds" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label">Campground's name</label>
+                <input type="text" class="form-control" id="title" minlength="5" maxlength="50" name="campground[title]"
+                    required autofocus>
+                <div class="invalid-feedback">
+                    Please choose a name of min 5 characters and max 50.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" min="0" step="0.1" class="form-control" id="price" name="campground[price]"
+                        placeholder="0.00" required>
+                    <div class="invalid-feedback">
+                        Please define a valid price.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" name="campground[city]" id="city" required>
+                <div class="invalid-feedback">
+                    Please select a city.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" name="campground[state]" id="state" required>
+                <div class="invalid-feedback">
+                    Please select a state.
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" minlength="10" maxlength="500" id="description"
+                    name="campground[description]" rows="3" required></textarea>
+                <div class="invalid-feedback">
+                    Please add a description (min 10 characters and max 500).
+
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Image(s)</label>
+                <input type="file" class="form-control" id="image" name="images" multiple required>
+                <div class="invalid-feedback">
+                    Please choose at least one image.
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Create new campground</button>
+        </form>
+        <a class="btn btn-warning mt-3" href="/campgrounds">Cancel</a>
+    </div>

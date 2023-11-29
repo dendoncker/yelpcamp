@@ -1,0 +1,7 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url("https://mdbootstrap.com/img/Photos/Others/images/76.jpg");
+
+    background-size: cover;
+    background-position: center;
+}

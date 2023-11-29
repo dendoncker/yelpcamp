@@ -1,0 +1,30 @@
+<% layout('layouts/boilerplate') -%>
+    <div class="card shadow col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+        <img src="https://images.unsplash.com/photo-1517398825998-780ca786555f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" " class="
+            card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Login</h5>
+            <p class="card-text">
+            <form action="/login" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" autofocus required>
+                    <div class="invalid-feedback">
+                        Please choose a username.
+                    </div>
+                </div>
+
+                <div class="mb-3 d-grid">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" required>
+                    <div class="invalid-feedback">
+                        Please choose a password.
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button class="d-grid btn btn-success">Login</button>
+                </div>
+            </form>
+            </p>
+        </div>
+    </div>
