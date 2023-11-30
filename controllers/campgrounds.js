@@ -20,6 +20,9 @@ module.exports.createCampground = async (req, res, next) => {
         query: campground.city + ',' + campground.state,
         limit: 1
     }).send();
+    if (!geoData.body.features[0]) {
+        throw new ExpressError('City not found', 502);
+    };
     campground.geometry = geoData.body.features[0].geometry;
     await campground.save();
     req.flash('success', 'Campground successfully added!');

@@ -25,7 +25,8 @@ module.exports.connectSrcUrls = [
 
 module.exports.imgSrcUrls = [
     "https://images.unsplash.com/",
-    "https://res.cloudinary.com/df4rzp9oa/"
+    "https://res.cloudinary.com/df4rzp9oa/",
+    "https://mdbootstrap.com/img/"
 ];
 
 module.exports.fontSrcUrls = [

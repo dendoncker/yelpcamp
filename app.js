@@ -38,18 +38,19 @@ app.use(methodOverride('_method'));
 const { connectSrcUrls, fontSrcUrls, scriptSrcUrls, imgSrcUrls, styleSrcUrls } = require('./utilities/helmetconfig.js');
 
 app.use(
-    helmet.contentSecurityPolicy({
-        directives: {
-            connectSrc: ["'self'", ...connectSrcUrls],
-            defaultSrc: ["'self'"],
-            fontSrc: ["'self'", ...fontSrcUrls],
-            scriptSrc: ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
-            workerSrc: ["'self'", "blob:"],
-            imgSrc: ["'self'", "data:", ...imgSrcUrls],
-            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls]
+    helmet({
+        contentSecurityPolicy: {
+            directives: {
+                connectSrc: ["'self'", ...connectSrcUrls],
+                defaultSrc: ["'self'"],
+                fontSrc: ["'self'", ...fontSrcUrls],
+                scriptSrc: ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
+                workerSrc: ["'self'", "blob:"],
+                imgSrc: ["'self'", "data:", ...imgSrcUrls],
+                styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls]
+            },
         },
-    },
-    ));
+    }));
 
 const MongoStore = require('connect-mongo');
 
